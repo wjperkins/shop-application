@@ -3,10 +3,10 @@ import axios from 'axios';
 const get = async url => {
   try {
     const response = await axios.get(url);
-    console.log(response);
+    return response.data;
   } catch (error) {
-    console.error(error);
+    throw error;
   }
 };
 
-export default get;
+export default { get };

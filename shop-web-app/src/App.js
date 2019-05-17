@@ -1,12 +1,10 @@
 import React from 'react';
-import { get } from './http';
+import ProductsContainer from './features/products/ProductsContainer';
 
 function App() {
   return (
     <div>
-      <button type="button" onClick={() => get('/api/values')}>
-        Click me!
-      </button>
+      <ProductsContainer />
     </div>
   );
 }
