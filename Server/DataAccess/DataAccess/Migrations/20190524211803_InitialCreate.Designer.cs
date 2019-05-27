@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20190512201555_InitialCreate")]
+    [Migration("20190524211803_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,7 +30,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("Price");
+                    b.Property<double>("Price");
 
                     b.HasKey("Id");
 

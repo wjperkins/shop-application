@@ -28,7 +28,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("Price");
+                    b.Property<double>("Price");
 
                     b.HasKey("Id");
 

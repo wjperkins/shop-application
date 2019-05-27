@@ -15,7 +15,7 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Price = table.Column<string>(nullable: true)
+                    Price = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
