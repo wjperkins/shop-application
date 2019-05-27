@@ -21,7 +21,7 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetAsync()
         {
-            return await databaseContext.Products.ToListAsync();
+            return await databaseContext.Products?.ToListAsync();
         }
 
         [HttpGet("{id}")]
@@ -30,22 +30,27 @@ namespace Api.Controllers
             return await databaseContext.Products.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task PostAsync([FromBody] Product product)
         {
+            databaseContext.Products.Add(product);
+            await databaseContext.SaveChangesAsync();
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task PutAsync(int id, [FromBody] Product product)
         {
+            var existing = await databaseContext.Products.FirstOrDefaultAsync(p => p.Id == id);
+            existing = product;
+            await databaseContext.SaveChangesAsync();
         }
 
-        // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
+            var toDelete = await databaseContext.Products.FirstOrDefaultAsync(p => p.Id == id);
+            databaseContext.Products.Remove(toDelete);
+            await databaseContext.SaveChangesAsync();
         }
     }
 }
