@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { asyncShape } from '../../propTypes';
 
 const AsyncWrapper = ({ async, children }) => {
   return (
@@ -15,14 +16,8 @@ const AsyncWrapper = ({ async, children }) => {
   );
 };
 
-export const asyncProp = {
-  loading: PropTypes.bool.isRequired,
-  data: PropTypes.any,
-  error: PropTypes.any
-};
-
 AsyncWrapper.propTypes = {
-  async: PropTypes.shape(asyncProp).isRequired,
+  async: asyncShape.isRequired,
   children: PropTypes.node
 };
 

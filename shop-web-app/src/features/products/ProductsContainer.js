@@ -1,27 +1,24 @@
-import React, { Fragment } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getProductsList } from './actions/productActions';
-import AsyncWrapper, { asyncProp } from '../common/AsyncWrapper';
+import AsyncWrapper from '../common/AsyncWrapper';
+import ProductsList from './ProductsList';
+import { asyncShape } from '../../propTypes';
 
 const ProductsContainer = ({ actions, products }) => {
+  useEffect(() => {
+    function fetchData() {
+      actions.getProductsList();
+    }
+    fetchData();
+  }, [actions]);
+
   return (
-    <Fragment>
-      <button type="button" onClick={() => actions.getProductsList()}>
-        Load Products
-      </button>
-      <AsyncWrapper async={products}>
-        {products.data &&
-          products.data.map(product => (
-            <div key={product.id}>
-              <div>Name: {product.name}</div>
-              <div>Description: {product.description}</div>
-              <div>Price: {product.price}</div>
-            </div>
-          ))}
-      </AsyncWrapper>
-    </Fragment>
+    <AsyncWrapper async={products}>
+      {products.data && <ProductsList products={products.data} />}
+    </AsyncWrapper>
   );
 };
 
@@ -29,7 +26,7 @@ ProductsContainer.propTypes = {
   actions: PropTypes.shape({
     getProductsList: PropTypes.func.isRequired
   }).isRequired,
-  products: PropTypes.shape(asyncProp).isRequired
+  products: asyncShape.isRequired
 };
 
 const mapStateToProps = state => {
