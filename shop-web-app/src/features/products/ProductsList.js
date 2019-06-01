@@ -6,7 +6,8 @@ import Product from './Product';
 
 const useStyles = makeStyles({
   root: {
-    display: 'flex'
+    display: 'flex',
+    flexWrap: 'wrap'
   }
 });
 

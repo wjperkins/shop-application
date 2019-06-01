@@ -9,4 +9,13 @@ const get = async url => {
   }
 };
 
-export default { get };
+const post = async (url, body) => {
+  try {
+    const response = await axios.post(url, body);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export default { get, post };
