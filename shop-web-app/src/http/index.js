@@ -18,4 +18,13 @@ const post = async (url, body) => {
   }
 };
 
-export default { get, post };
+const deleteItem = async url => {
+  try {
+    const response = await axios.delete(url);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export default { get, post, deleteItem };

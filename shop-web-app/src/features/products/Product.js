@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
   }
 });
 
-function Product({ product }) {
+function Product({ product, deleteProduct }) {
   const classes = useStyles();
   return (
     <Card className={classes.card}>
@@ -33,14 +34,17 @@ function Product({ product }) {
         <Typography variant="h5">£{product.price}</Typography>
       </CardContent>
       <CardActions className={classes.actions}>
-        <Button size="small">Details</Button>
+        <Button size="small" onClick={() => deleteProduct(product.id)}>
+          Delete
+        </Button>
       </CardActions>
     </Card>
   );
 }
 
 Product.propTypes = {
-  product: productShape.isRequired
+  product: productShape.isRequired,
+  deleteProduct: PropTypes.func.isRequired
 };
 
 export default Product;

@@ -2,10 +2,14 @@ import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getProductsList, createProductAndRefreshList } from './actions/productActions';
+import {
+  getProductsList,
+  createProductAndRefreshList,
+  deleteProductAndRefreshList
+} from './actions/productActions';
 import AsyncWrapper from '../common/AsyncWrapper';
+import AsyncButton from '../common/AsyncButton';
 import ProductsList from './ProductsList';
-import AddProduct from './AddProduct';
 import { asyncShape } from '../../propTypes';
 
 const ProductsContainer = ({ actions, products, addedProduct }) => {
@@ -19,9 +23,18 @@ const ProductsContainer = ({ actions, products, addedProduct }) => {
   return (
     <Fragment>
       <AsyncWrapper async={products}>
-        {products.data && <ProductsList products={products.data} />}
+        {products.data && (
+          <ProductsList
+            products={products.data}
+            deleteProduct={actions.deleteProductAndRefreshList}
+          />
+        )}
       </AsyncWrapper>
-      <AddProduct addProduct={actions.createProductAndRefreshList} addedProduct={addedProduct} />
+      <AsyncButton
+        onClickFunction={actions.createProductAndRefreshList}
+        async={addedProduct}
+        label="Add"
+      />
     </Fragment>
   );
 };
@@ -29,7 +42,8 @@ const ProductsContainer = ({ actions, products, addedProduct }) => {
 ProductsContainer.propTypes = {
   actions: PropTypes.shape({
     getProductsList: PropTypes.func.isRequired,
-    createProductAndRefreshList: PropTypes.func.isRequired
+    createProductAndRefreshList: PropTypes.func.isRequired,
+    deleteProductAndRefreshList: PropTypes.func.isRequired
   }).isRequired,
   products: asyncShape.isRequired,
   addedProduct: asyncShape.isRequired
@@ -44,7 +58,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators({ getProductsList, createProductAndRefreshList }, dispatch)
+    actions: bindActionCreators(
+      { getProductsList, createProductAndRefreshList, deleteProductAndRefreshList },
+      dispatch
+    )
   };
 };
 

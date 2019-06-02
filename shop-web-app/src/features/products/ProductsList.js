@@ -11,19 +11,20 @@ const useStyles = makeStyles({
   }
 });
 
-const ProductsList = ({ products }) => {
+const ProductsList = ({ products, deleteProduct }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       {products.map(product => (
-        <Product key={product.id} product={product} />
+        <Product key={product.id} product={product} deleteProduct={deleteProduct} />
       ))}
     </div>
   );
 };
 
 ProductsList.propTypes = {
-  products: PropTypes.arrayOf(productShape).isRequired
+  products: PropTypes.arrayOf(productShape).isRequired,
+  deleteProduct: PropTypes.func.isRequired
 };
 
 export default ProductsList;
