@@ -28,7 +28,7 @@ const AsyncButton = ({ onClickFunction, async, label }) => {
       >
         {label}
       </Button>
-      {async.loading && <CircularProgress size={25} />}
+      {async.loading && <CircularProgress data-testid="loading-spinner" size={25} />}
     </div>
   );
 };

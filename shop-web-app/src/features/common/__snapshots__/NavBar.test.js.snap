@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar renders correctly 1`] = `
+<div>
+  <div
+    class="makeStyles-root-1"
+  >
+    <header
+      class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed makeStyles-appBar-2"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      >
+        <h6
+          class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap"
+        >
+          Shop Application
+        </h6>
+      </div>
+    </header>
+    <div
+      class="MuiDrawer-root MuiDrawer-docked makeStyles-drawer-3"
+    >
+      <div
+        class="MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper makeStyles-drawerPaper-4 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft"
+      >
+        <div
+          class="makeStyles-toolbar-6"
+        />
+        <ul
+          class="MuiList-root MuiList-padding"
+        >
+          <div
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="MuiListItemText-root"
+            >
+              <span
+                class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary"
+              >
+                Products
+              </span>
+            </div>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+          <div
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="MuiListItemText-root"
+            >
+              <span
+                class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary"
+              >
+                Orders
+              </span>
+            </div>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+        </ul>
+      </div>
+    </div>
+    <main
+      class="makeStyles-content-5"
+    >
+      <div
+        class="makeStyles-toolbar-6"
+      />
+      Hello world
+    </main>
+  </div>
+</div>
+`;
