@@ -1,7 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { connect, useDispatch } from 'react-redux';
 import {
   getProductsList,
   createProductAndRefreshList,
@@ -12,39 +10,28 @@ import AsyncButton from '../common/AsyncButton';
 import ProductsList from './ProductsList';
 import { asyncShape } from '../../propTypes';
 
-const ProductsContainer = ({ actions, products, addedProduct }) => {
+const ProductsContainer = ({ products, addedProduct }) => {
+  const dispatch = useDispatch();
   useEffect(() => {
-    function fetchData() {
-      actions.getProductsList();
-    }
-    fetchData();
-  }, [actions]);
+    dispatch(getProductsList());
+  }, [dispatch]);
+
+  const createProductFunc = () => dispatch(createProductAndRefreshList());
+  const deleteProductFunc = id => dispatch(deleteProductAndRefreshList(id));
 
   return (
     <Fragment>
       <AsyncWrapper async={products}>
         {products.data && (
-          <ProductsList
-            products={products.data}
-            deleteProduct={actions.deleteProductAndRefreshList}
-          />
+          <ProductsList products={products.data} deleteProduct={deleteProductFunc} />
         )}
       </AsyncWrapper>
-      <AsyncButton
-        onClickFunction={actions.createProductAndRefreshList}
-        async={addedProduct}
-        label="Add"
-      />
+      <AsyncButton onClickFunction={createProductFunc} async={addedProduct} label="Add" />
     </Fragment>
   );
 };
 
 ProductsContainer.propTypes = {
-  actions: PropTypes.shape({
-    getProductsList: PropTypes.func.isRequired,
-    createProductAndRefreshList: PropTypes.func.isRequired,
-    deleteProductAndRefreshList: PropTypes.func.isRequired
-  }).isRequired,
   products: asyncShape.isRequired,
   addedProduct: asyncShape.isRequired
 };
@@ -56,16 +43,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    actions: bindActionCreators(
-      { getProductsList, createProductAndRefreshList, deleteProductAndRefreshList },
-      dispatch
-    )
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductsContainer);
+export default connect(mapStateToProps)(ProductsContainer);
