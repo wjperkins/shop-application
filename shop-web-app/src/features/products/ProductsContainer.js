@@ -1,5 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   getProductsList,
   createProductAndRefreshList,
@@ -8,9 +8,8 @@ import {
 import AsyncWrapper from '../common/AsyncWrapper';
 import AsyncButton from '../common/AsyncButton';
 import ProductsList from './ProductsList';
-import { asyncShape } from '../../propTypes';
 
-const ProductsContainer = ({ products, addedProduct }) => {
+const ProductsContainer = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProductsList());
@@ -18,6 +17,9 @@ const ProductsContainer = ({ products, addedProduct }) => {
 
   const createProductFunc = () => dispatch(createProductAndRefreshList());
   const deleteProductFunc = id => dispatch(deleteProductAndRefreshList(id));
+
+  const products = useSelector(state => state.products);
+  const addedProduct = useSelector(state => state.addedProduct);
 
   return (
     <Fragment>
@@ -31,16 +33,4 @@ const ProductsContainer = ({ products, addedProduct }) => {
   );
 };
 
-ProductsContainer.propTypes = {
-  products: asyncShape.isRequired,
-  addedProduct: asyncShape.isRequired
-};
-
-const mapStateToProps = state => {
-  return {
-    addedProduct: state.addedProduct,
-    products: state.products
-  };
-};
-
-export default connect(mapStateToProps)(ProductsContainer);
+export default ProductsContainer;
