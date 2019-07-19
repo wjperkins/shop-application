@@ -22,7 +22,7 @@ export const createProduct = () => {
   return {
     type: CREATE_PRODUCT,
     async payload() {
-      const createdProduct = http.post('/api/products', product);
+      const createdProduct = await http.post('/api/products', product);
       return createdProduct;
     }
   };
