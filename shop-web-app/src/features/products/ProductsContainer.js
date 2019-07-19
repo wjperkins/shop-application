@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect, Fragment, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getProductsList,
@@ -11,15 +11,16 @@ import ProductsList from './ProductsList';
 
 const ProductsContainer = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProductsList());
-  }, [dispatch]);
-
-  const createProductFunc = () => dispatch(createProductAndRefreshList());
-  const deleteProductFunc = id => dispatch(deleteProductAndRefreshList(id));
-
   const products = useSelector(state => state.products);
   const addedProduct = useSelector(state => state.addedProduct);
+
+  const createProductFunc = useCallback(() => dispatch(createProductAndRefreshList()), [dispatch]);
+  const deleteProductFunc = useCallback(id => dispatch(deleteProductAndRefreshList(id)), [dispatch]);
+  const getProductsFunc = useCallback(() => dispatch(getProductsList()), [dispatch]);
+
+  useEffect(() => {
+    getProductsFunc();
+  }, [getProductsFunc]);
 
   return (
     <Fragment>
