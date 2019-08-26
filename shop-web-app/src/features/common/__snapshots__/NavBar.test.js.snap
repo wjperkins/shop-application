@@ -6,7 +6,7 @@ exports[`NavBar renders correctly 1`] = `
     class="makeStyles-root-1"
   >
     <header
-      class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed makeStyles-appBar-2"
+      class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed makeStyles-appBar-2 MuiAppBar-colorPrimary mui-fixed"
     >
       <div
         class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
@@ -40,7 +40,7 @@ exports[`NavBar renders correctly 1`] = `
               class="MuiListItemText-root"
             >
               <span
-                class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary"
+                class="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
               >
                 Products
               </span>
@@ -59,7 +59,7 @@ exports[`NavBar renders correctly 1`] = `
               class="MuiListItemText-root"
             >
               <span
-                class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary"
+                class="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
               >
                 Orders
               </span>

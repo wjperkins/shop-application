@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
 import ProductsList from './ProductsList';
 
 describe('ProductsList', () => {
@@ -10,8 +10,8 @@ describe('ProductsList', () => {
 
   it('renders all products', async () => {
     const products = [
-      { id: 'test product 1', name: 'test name 1', description: 'test description 1', price: 4.21 },
-      { id: 'test product 2', name: 'test name 2', description: 'test description 2', price: 0.78 }
+      { id: 1, name: 'test name 1', description: 'test description 1', price: 4.21 },
+      { id: 2, name: 'test name 2', description: 'test description 2', price: 0.78 }
     ];
     const { getByText } = render(
       <ProductsList products={products} deleteProduct={mockOnClickFunction} />
