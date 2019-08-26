@@ -12,11 +12,11 @@ export const getProductsList = () => ({
   }
 });
 
-export const createProduct = () => {
+export const createProduct = (name, description, price) => {
   const product = {
-    name: 'new product name',
-    description: 'new product description',
-    price: 12.49
+    name,
+    description,
+    price
   };
 
   return {
@@ -36,10 +36,10 @@ export const deleteProduct = id => ({
   }
 });
 
-export const createProductAndRefreshList = () => {
+export const createProductAndRefreshList = (name, description, price) => {
   return async dispatch => {
     try {
-      await dispatch(createProduct());
+      await dispatch(createProduct(name, description, price));
       await dispatch(getProductsList());
     } catch (error) {
       console.log(error);

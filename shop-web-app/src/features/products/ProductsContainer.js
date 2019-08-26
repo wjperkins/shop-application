@@ -6,30 +6,31 @@ import {
   deleteProductAndRefreshList
 } from './actions/productActions';
 import AsyncWrapper from '../common/AsyncWrapper';
-import AsyncButton from '../common/AsyncButton';
 import ProductsList from './ProductsList';
+import AddProduct from './AddProduct';
 
 const ProductsContainer = () => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.products);
   const addedProduct = useSelector(state => state.addedProduct);
 
-  const createProductFunc = useCallback(() => dispatch(createProductAndRefreshList()), [dispatch]);
-  const deleteProductFunc = useCallback(id => dispatch(deleteProductAndRefreshList(id)), [dispatch]);
-  const getProductsFunc = useCallback(() => dispatch(getProductsList()), [dispatch]);
+  const createProduct = useCallback(
+    (name, description, price) => dispatch(createProductAndRefreshList(name, description, price)),
+    [dispatch]
+  );
+  const deleteProduct = useCallback(id => dispatch(deleteProductAndRefreshList(id)), [dispatch]);
+  const getProducts = useCallback(() => dispatch(getProductsList()), [dispatch]);
 
   useEffect(() => {
-    getProductsFunc();
-  }, [getProductsFunc]);
+    getProducts();
+  }, [getProducts]);
 
   return (
     <Fragment>
       <AsyncWrapper async={products}>
-        {products.data && (
-          <ProductsList products={products.data} deleteProduct={deleteProductFunc} />
-        )}
+        {products.data && <ProductsList products={products.data} deleteProduct={deleteProduct} />}
       </AsyncWrapper>
-      <AsyncButton onClickFunction={createProductFunc} async={addedProduct} label="Add" />
+      <AddProduct createProduct={createProduct} addedProduct={addedProduct} />
     </Fragment>
   );
 };
