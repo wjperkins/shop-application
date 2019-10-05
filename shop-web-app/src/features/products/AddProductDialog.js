@@ -6,8 +6,10 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import { makeStyles } from '@material-ui/core/styles';
 import AsyncButton from '../common/AsyncButton';
+import PriceFormatComponent from '../common/PriceFormatComponent';
 import { asyncShape } from '../../propTypes';
 
 const useStyles = makeStyles({
@@ -47,6 +49,10 @@ const AddProductDialog = ({ createProduct, addedProduct, isDialogOpen, handleDia
           label="Price"
           value={price}
           onChange={e => setPrice(e.target.value)}
+          InputProps={{
+            startAdornment: <InputAdornment position="start">£</InputAdornment>,
+            inputComponent: PriceFormatComponent
+          }}
         />
       </DialogContent>
       <DialogActions>

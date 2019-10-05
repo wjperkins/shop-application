@@ -22,13 +22,14 @@
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-number-format": "^4.3.0",
     "react-redux": "^7.1.1",
     "react-scripts": "^3.1.1",
     "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
     "redux-promise-middleware": "^6.1.1",
     "redux-thunk": "^2.3.0",
-    "type-to-reducer": "^1.2.0",
-    "redux-devtools-extension": "^2.13.8"
+    "type-to-reducer": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -4,7 +4,14 @@
   "rules": {
     "prettier/prettier": ["error"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/jsx-one-expression-per-line": [0, { "allow": "single-child" }]
+    "react/jsx-one-expression-per-line": [0, { "allow": "single-child" }],
+    "react/jsx-props-no-spreading": [
+      0,
+      {
+        "html": "ignore",
+        "custom": "ignore"
+      }
+    ]
   },
   "env": {
     "browser": true,
