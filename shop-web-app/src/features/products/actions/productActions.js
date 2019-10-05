@@ -1,4 +1,4 @@
-import http from '../../../http';
+import http from '../../../http/http';
 
 export const GET_PRODUCTS_LIST = 'GET_PRODUCTS_LIST';
 export const CREATE_PRODUCT = 'CREATE_PRODUCT';
@@ -38,22 +38,14 @@ export const deleteProduct = id => ({
 
 export const createProductAndRefreshList = (name, description, price) => {
   return async dispatch => {
-    try {
-      await dispatch(createProduct(name, description, price));
-      await dispatch(getProductsList());
-    } catch (error) {
-      console.log(error);
-    }
+    await dispatch(createProduct(name, description, price));
+    await dispatch(getProductsList());
   };
 };
 
 export const deleteProductAndRefreshList = id => {
   return async dispatch => {
-    try {
-      await dispatch(deleteProduct(id));
-      await dispatch(getProductsList());
-    } catch (error) {
-      console.log(error);
-    }
+    await dispatch(deleteProduct(id));
+    await dispatch(getProductsList());
   };
 };

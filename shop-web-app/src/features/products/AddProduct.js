@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -17,7 +17,7 @@ const AddProduct = ({ createProduct, addedProduct }) => {
   const classes = useStyles();
 
   return (
-    <Fragment>
+    <>
       <AddProductDialog
         createProduct={createProduct}
         addedProduct={addedProduct}
@@ -32,7 +32,7 @@ const AddProduct = ({ createProduct, addedProduct }) => {
       >
         Add
       </Button>
-    </Fragment>
+    </>
   );
 };
 

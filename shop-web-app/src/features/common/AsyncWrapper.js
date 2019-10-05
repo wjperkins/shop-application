@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { asyncShape } from '../../propTypes';
 
 const AsyncWrapper = ({ async, children }) => {
   return (
-    <Fragment>
+    <>
       {async.loading && <div>Loading...</div>}
       {async.error && (
         <div>
@@ -12,7 +12,7 @@ const AsyncWrapper = ({ async, children }) => {
         </div>
       )}
       {children}
-    </Fragment>
+    </>
   );
 };
 

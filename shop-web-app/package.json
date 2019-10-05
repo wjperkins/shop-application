@@ -13,8 +13,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
-    "prettier": "^1.18.2",
-    "redux-devtools-extension": "^2.13.8"
+    "prettier": "^1.18.2"
   },
   "dependencies": {
     "@material-ui/core": "^4.3.3",
@@ -28,13 +27,15 @@
     "redux": "^4.0.4",
     "redux-promise-middleware": "^6.1.1",
     "redux-thunk": "^2.3.0",
-    "type-to-reducer": "^1.2.0"
+    "type-to-reducer": "^1.2.0",
+    "redux-devtools-extension": "^2.13.8"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src"
   },
   "eslintConfig": {
     "extends": "react-app"

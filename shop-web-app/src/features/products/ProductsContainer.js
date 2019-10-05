@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getProductsList,
@@ -26,12 +26,12 @@ const ProductsContainer = () => {
   }, [getProducts]);
 
   return (
-    <Fragment>
+    <>
       <AsyncWrapper async={products}>
         {products.data && <ProductsList products={products.data} deleteProduct={deleteProduct} />}
       </AsyncWrapper>
       <AddProduct createProduct={createProduct} addedProduct={addedProduct} />
-    </Fragment>
+    </>
   );
 };
 
